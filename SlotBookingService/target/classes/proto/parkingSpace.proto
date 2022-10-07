@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option java_package = "generatedGRPCCode.parkingSpace";
+
+service ParkingSpace {
+  rpc addParkingSpace(slot) returns(APIResponse);
+  rpc updateByID(updateSlot) returns(APIResponse);
+  rpc deleteBySlotNumber(SlotNumber) returns(APIResponse);
+  rpc getBySlotNumber(SlotNumber)  returns(slot);
+  rpc getAllSlotList(providerUserid) returns(stream slot);
+  rpc updatePrice(setprice) returns(APIResponse);
+  rpc filterByVtype(VType) returns(stream carAndBikeSlot);
+  
+  
+}
+message   providerUserid{
+   int32 providerUserId=2;
+}
+message SlotNumber{
+  int32 slotNum=1;
+  int32 providerUserId=2;
+}
+message slot{
+  int32 slotNumber=1;
+  string vehicleType=2;
+  int64 price=3;
+ int32 providerUserId=4;
+  
+}
+message carAndBikeSlot{
+  int32 slotNumber=1;
+  string vehicleType=2;
+  int64 price=3;
+  string msg=4;
+    int32 providerUserId=5;
+  
+}
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+    int32 providerUserId=3;
+  
+}
+message updateSlot{
+  int32 num=1;
+  int32 NewSlotNumber=2;
+  string vehicleType=3;
+  int32 currentSlotNumber=4;
+  int64 price=5;
+    int32 providerUserId=6;
+  
+}
+message setprice{
+int64 price=1;
+string choice=2;
+  int32 providerUserId=3;
+
+}
+message VType{
+string VehicleTypechoice=1;
+  int32 providerUserId=2;
+
+}

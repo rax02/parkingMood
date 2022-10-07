@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_package = "com.user.grpc";
+
+service User {
+  rpc updateUser(UserDetails) returns(APIResponse);
+  rpc removeUser(removeById) returns(APIResponse);
+
+}
+
+message UserDetails{
+  string fullName =1;
+  string username =2;
+  int32 userId =3;
+  string password =4;
+  string email_id =5;
+  int64 phoneNumber =6;
+}
+message removeById{
+  int32 userId=1;
+}
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}

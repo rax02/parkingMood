@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_package = "com.feedbackserver.providerGrpc";
+
+service Providerfeedback {
+  rpc getFeedbackById(FeedbackID) returns(feedMessage);
+  rpc updateFeedbackById(updateFeedback) returns(APIResponse);
+  rpc deleteFeedbackById(FeedbackID)  returns(APIResponse);
+  rpc getAllFeedback(empty) returns(stream feedMessage1);
+
+}
+
+message FeedbackID{
+  int32 bookingid = 1;
+
+}
+
+message feedMessage1{
+  int32  feedbackid = 1;
+  string name = 2;
+  int32 CustomerId = 3;
+  int32 bookingid = 4;
+  int32 rating = 5;
+  string writeReview = 6;
+}
+
+message updateFeedback{
+  int32 bookingid = 1;
+  int32 rating = 2;
+  string writeReview = 3;
+}
+message empty{
+
+}
+
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+message feedMessage{
+  int32  feedbackid = 1;
+  string name = 2;
+  int32 CustomerId = 3;
+  int32 bookingid = 4;
+  int32 rating = 5;
+  string writeReview = 6;
+  string MessageApi = 7;
+}

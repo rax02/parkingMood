@@ -1,0 +1,7 @@
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/common/CommonService.java
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/EmailNotificationSever/grpc/Email.java
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/EmailNotificationSever/grpc/MailGrpc.java
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/service/EmailNotificationService.java
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/Driver/EmailServer.java
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/DaoUtility/MailUtility.java
+/home/ravi/stackRoute-workspace/project-prod/parkingmood/EmailNotificationService/src/main/java/DaoUtility/DbConnection.java

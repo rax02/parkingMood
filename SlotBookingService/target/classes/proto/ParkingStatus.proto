@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option java_package = "generatedGRPCCode.parkingStatus";
+
+service ParkingStatus{
+  rpc getStatusByParkingLotId(ParkingLotId) returns(ParkingLotStatusResponse);
+  rpc setStatusByParkingLotId(SetParkingLotStatusRequest) returns(APIResponse);
+  rpc getStatusByParkingSpaceId(ParkingSpaceId) returns(ParkingSpaceStatusResponse);
+  rpc setStatusByParkingSpaceId(SetParkingSpaceStatusRequest) returns(APIResponse);
+  rpc addParkingLots(AddParkingLotsRequest) returns(APIResponse);
+  rpc removeParkingLots(RemoveParkingLotsRequest) returns(APIResponse);
+}
+
+message ParkingLotId{
+  int32 parkingLotId = 1;
+}
+
+message SetParkingLotStatusRequest{
+  int32 parkingLotId = 1;
+  string parkingLotStatus =2;
+}
+
+message ParkingSpaceId{
+  int32 parkingSpaceId =1;
+}
+
+message SetParkingSpaceStatusRequest{
+  int32 parkingSpaceId =1;
+  string parkingSpaceStatus=2;
+}
+
+message  AddParkingLotsRequest{
+  repeated ParkingLot parkingLots = 1;
+}
+
+message  RemoveParkingLotsRequest{
+  repeated  ParkingLot parkingLots =1;
+}
+
+message ParkingLotStatusResponse{
+  APIResponse apiResponse = 1;
+  ParkingLot parkingLot = 2;
+}
+
+message ParkingSpaceStatusResponse{
+  APIResponse apiResponse =1;
+  int32 parkingSpaceId =2;
+  repeated ParkingLot parkingLots=3;
+}
+
+
+message ParkingLot{
+  int32 parkingLotId =1;
+  int32 parkingSpaceId = 2;
+  string parkingLotStatus= 3;
+}
+
+message APIResponse{
+  string responseMessage =1;
+  int32 responseCode =2;
+}

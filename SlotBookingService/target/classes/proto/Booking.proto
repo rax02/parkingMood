@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option java_package = "generatedGRPCCode.booking";
+
+service Booking{
+  rpc bookParkingLot(BookingRequest) returns(BookingResponse);
+  rpc getBookingDetailsFilteredBy(BookingDetailsFilterRequest) returns(BookingDetailsFilteredResponse);
+  rpc cancelBooking(CancelBookingRequest) returns(APIResponse);
+}
+
+message BookingRequest{
+  BookingDetails bookingDetails = 1;
+}
+
+message BookingResponse{
+  APIResponse apiResponse = 1;
+}
+
+message BookingDetailsFilterRequest{
+  string bookingId =1;
+  int32 customerId =2;
+  int32 parkingSpaceId =3;
+  int32 parkingLotId =4;
+  string fromDateTime =5;
+  string toDateTime = 6;
+  string paymentMethod = 7;
+  string bookingStatus = 8;
+}
+
+message BookingDetailsFilteredResponse{
+  APIResponse apiResponse =1;
+  repeated BookingDetailsResponse bookingDetailsFilteredList=2;
+}
+
+message CancelBookingRequest{
+  string bookingId=1;
+  int32 parkingLotId=2;
+  string cancelledBy=3;
+  string reason=4;
+}
+
+message BookingDetails{
+  int32 customerId =1;
+  int32 parkingSpaceId =2;
+  int32 parkingLotId =3;
+  string startDateTime =4;
+  string endDateTime = 5;
+  string paymentMethod = 6;
+  string bookingStatus = 7;
+}
+
+message BookingDetailsResponse{
+  string bookingId =1;
+  int32 customerId =2;
+  int32 parkingSpaceId =3;
+  int32 parkingLotId =4;
+  string startDateTime =5;
+  string endDateTime = 6;
+  string paymentMethod = 7;
+  string bookingStatus = 8;
+  int32 paymentId = 9;
+  string createdAt =10;
+}
+
+
+message APIResponse{
+  string responseMessage =1;
+  int32 responseCode =2;
+}

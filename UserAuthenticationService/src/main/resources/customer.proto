@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "com.customer.grpc";
+
+service newCustomer {
+  rpc addCustomer(CustomerDetails) returns(APIResponse);
+  rpc getCustomer(empty) returns(CustomerDetails);
+
+}
+
+message CustomerDetails{
+  string fullName =1;
+  string username =2;
+  int32 userId =3;
+  string email_id =5;
+  string password =4;
+  string phoneNumber =6;
+}
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+message empty{
+
+}

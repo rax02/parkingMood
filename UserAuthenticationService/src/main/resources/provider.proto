@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "com.provider.grpc";
+
+service newProvider {
+  rpc addProvider(providerDetails) returns(APIResponse);
+  rpc getProvider(empty) returns(providerDetails);
+  
+}
+
+message providerDetails{
+  string fullName =1;
+  string username =2;
+  int32 userId =3;
+  string password =4;
+  string email_id =5;
+  string address =6;
+}
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+message empty{
+
+}

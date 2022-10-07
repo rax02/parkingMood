@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_package = "com.feedbackserver.grpc";
+
+service feedback {
+  rpc addFeedback(feedMessage) returns(APIResponse);
+
+}
+
+message feedMessage{
+  int32  feedbackid = 1;
+  string name = 2;
+  int32 CustomerId = 3;
+  int32 bookingid = 4;
+  int32 rating = 5;
+  string writeReview = 6;
+}
+
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}

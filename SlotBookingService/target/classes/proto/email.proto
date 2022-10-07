@@ -1,0 +1,39 @@
+syntax = "proto3";
+option java_package = "generatedGRPCCode.email";
+service Mail{
+  rpc Send(SendBody) returns(Response);
+  rpc SlotBookingConfirmation(SlotConfirmation) returns(Response);
+  rpc SlotBookingCancellation(BookingCancellation) returns(Response);
+  rpc CustomerRegistration(Registration) returns(Response);
+}
+message SendBody{
+  string recipients = 1;
+  string subject = 2;
+  string Text = 3;
+}
+message SlotConfirmation{
+  string emailId=1;
+  int32 customerId =2;
+  int32 parkingSpaceId =3;
+  int32 parkingLotId =4;
+  string bookingId=5;
+  double totalCost=6;
+  string bookingStatus = 7;
+}
+message  Registration{
+  string emailId =1;
+  string fullName =2;
+  string username =3;
+  int32 userId =4;
+  string password =5;
+  int64 phoneNumber =6;
+}
+message BookingCancellation{
+  string bookingId=1;
+  string emailId=2;
+}
+
+message Response{
+  string responseMessage=1;
+  int32 reponseCode=2;
+}

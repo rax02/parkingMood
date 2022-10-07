@@ -1,0 +1,41 @@
+syntax = "proto3";
+option java_package ="EmailNotificationSever.grpc";
+service Mail{
+  rpc Send(SendBody) returns(Response);
+  rpc SlotBookingConfirmation(SlotConfirmation) returns(Response);
+  rpc SlotBookingCancellation(BookingCancellation) returns(Response);
+  rpc CustomerRegistration(Registration) returns(Response);
+}
+message SendBody{
+  string subject = 1;
+  string Text = 2;
+}
+message SlotConfirmation{
+  string emailId=1;
+  int32 customerId =2;
+  int32 parkingSpaceId =3;
+  int32 parkingLotId =4;
+  string bookingId=5;
+  double totalCost=6;
+  string startDateTime =7;
+  string endDateTime = 8;
+  string bookingStatus = 9;
+
+}
+message  Registration{
+  string fullName =1;
+  string username =2;
+  int32 userId =3;
+  string email_id =4;
+  string password =5;
+  string phoneNumber =6;
+}
+message BookingCancellation{
+  int32 bookingId=1;
+  string emailId=2;
+}
+
+message Response{
+  string responseMessage=1;
+  int32 reponseCode=2;
+}
